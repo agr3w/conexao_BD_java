@@ -5,10 +5,10 @@ import entity.Usuario;
 
 //** Classe com métodos estáticos para exibir telas e capturar dados do usuário
 public class TelaUsuario {
-    
+
     private static Scanner scanner = new Scanner(System.in);
-    
-    //** Exibe o menu principal e retorna a opção selecionada
+
+    // ** Exibe o menu principal e retorna a opção selecionada
     public static int exibirMenu() {
         System.out.println("\n=== Sistema de Cadastro de Usuários ===");
         System.out.println("1 - Cadastrar usuário");
@@ -21,13 +21,14 @@ public class TelaUsuario {
         System.out.print("Escolha uma opção: ");
         try {
             return Integer.parseInt(scanner.nextLine());
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println("Opção inválida!");
             return -1;
         }
     }
-    
-    //** Captura os dados para criação de um novo usuário e retorna um objeto Usuario
+
+    // ** Captura os dados para criação de um novo usuário e retorna um objeto
+    // Usuario
     public static Usuario capturarDadosUsuario() throws Exception {
         System.out.println("== Cadastro de Usuário ==");
         System.out.print("Digite o ID: ");
@@ -40,29 +41,41 @@ public class TelaUsuario {
         int idade = Integer.parseInt(scanner.nextLine());
         return new Usuario(id, nome, cpf, idade);
     }
-    
-    //** Captura o ID do usuário
+
+    // ** Captura o ID do usuário
     public static int capturarId() {
         System.out.print("Digite o ID: ");
         return Integer.parseInt(scanner.nextLine());
     }
-    
-    //** Captura o CPF do usuário
+
+    // ** Captura o CPF do usuário
     public static String capturarCpf() {
         System.out.print("Digite o CPF (11 dígitos): ");
         return scanner.nextLine();
     }
-    
-    //** Captura as iniciais do nome do usuário
+
+    // ** Captura as iniciais do nome do usuário
     public static String capturarIniciais() {
         System.out.print("Digite as iniciais do nome: ");
         return scanner.nextLine();
     }
-    
-    //** Método para confirmar ações (por exemplo, remoção)
+
+    // ** Método para confirmar ações (por exemplo, remoção)
     public static boolean confirmarAcao(String mensagem) {
         System.out.print(mensagem + " (S/N): ");
         String resp = scanner.nextLine();
         return resp.equalsIgnoreCase("S");
     }
+
+    public static Usuario capturarDadosEdicao(int id) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite o novo Nome: ");
+        String nome = sc.nextLine();
+        System.out.print("Digite o novo CPF (11 dígitos): ");
+        String cpf = sc.nextLine();
+        System.out.print("Digite a nova Idade: ");
+        int idade = Integer.parseInt(sc.nextLine());
+        return new Usuario(id, nome, cpf, idade);
+    }
+
 }
